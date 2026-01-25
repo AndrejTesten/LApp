@@ -1,0 +1,72 @@
+/* GENERAL LAYOUT */
+.draw-card {
+  max-width: 900px; /* nice PC width */
+  margin: auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* CONTROLS */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  .control-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    label {
+      font-size: 1rem;
+      margin-right: 5px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 80px;
+      padding: 5px;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff6f91;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: #ff4f70;
+    }
+  }
+}
+
+/* CANVAS */
+canvas {
+  border: 2px solid #ff6f91;
+  border-radius: 12px;
+  background-color: #fff0f5;
+  touch-action: none;
+  width: 100%;
+  height: 50vh;
+  display: block;
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 480px) {
+  .controls .btn {
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+
+  canvas {
+    height: 45vh;
+  }
+}

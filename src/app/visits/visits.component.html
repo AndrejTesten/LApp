@@ -1,0 +1,70 @@
+<div class="visits">
+
+  <!-- NEXT VISIT -->
+  <div class="card hero" *ngIf="nextVisit">
+    <h2>💞 Next Time We Meet</h2>
+    <div class="countdown">{{ daysLeft }} days</div>
+    <div class="dates">
+      {{ nextVisit.startDate | date:'mediumDate' }} → {{ nextVisit.endDate | date:'mediumDate' }}
+    </div>
+    <p class="city">📍 {{ nextVisit.city }}</p>
+    <p class="note">{{ nextVisit.note }}</p>
+  </div>
+
+  <!-- ADD BUTTON -->
+  <div class="actions">
+    <button class="btn-add" (click)="openNew()">Add Visit</button>
+  </div>
+  <!-- FUTURE VISITS -->
+  <h3>Future Visits 💖</h3>
+  <div class="timeline">
+    <div class="visit" *ngFor="let v of futureVisits" (click)="openEdit(v)">
+      <strong>{{ v.startDate | date:'mediumDate' }}</strong>
+      <span>{{ v.city }}</span>
+      <button class="delete-btn" (click)="deleteVisit(v.id); $event.stopPropagation()">✕</button>
+    </div>
+  </div>
+
+  <!-- PAST VISITS -->
+  <h3>Past Visits 💭</h3>
+  <div class="timeline past">
+    <div class="visit" *ngFor="let v of pastVisits" (click)="openEdit(v)">
+      <strong>{{ v.startDate | date:'mediumDate' }}</strong>
+      <span>{{ v.city }}</span>
+    </div>
+  </div>
+
+  <div class="modal" *ngIf="showForm">
+    <div class="modal-content">
+      <h3>{{ editing ? 'Edit Visit' : 'Add Visit' }}</h3>
+      <form (ngSubmit)="save()" #visitForm="ngForm">
+        <label>
+          City
+          <input type="text" [(ngModel)]="form.city" name="city" placeholder="City" required />
+        </label>
+        <label>
+          Start Date
+          <input type="date" [(ngModel)]="form.startDate" name="startDate" [min]="minStartDate"
+            (change)="validateDates()" required />
+        </label>
+
+        <label>
+          End Date
+          <input type="date" [(ngModel)]="form.endDate" name="endDate" [min]="form.startDate || minStartDate"
+            (change)="validateDates()" required />
+        </label>
+
+        <label>
+          Note
+          <textarea [(ngModel)]="form.note" name="note" placeholder="Optional note"></textarea>
+        </label>
+        <p class="error" *ngIf="!formValid">{{ errorMessage }}</p>
+        <div class="form-actions">
+          <button type="submit" [disabled]="!formValid">{{ editing ? 'Update' : 'Save' }}</button>
+          <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

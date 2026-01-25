@@ -1,0 +1,20 @@
+<nav class="top-nav">
+  <div class="logo" routerLink="/home">
+    Our Little World 💕
+  </div>
+
+  <div class="nav-links" [class.open]="menuOpen">
+    <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Home</a>
+    <a routerLink="/draw" routerLinkActive="active" (click)="closeMenu()">Draw</a>
+    <a routerLink="/trip-list" routerLinkActive="active" (click)="closeMenu()">Trips</a>
+    <a routerLink="/visits" routerLinkActive="active" (click)="closeMenu()">Visits</a>
+    <a routerLink="/notes" routerLinkActive="active" (click)="closeMenu()">Notes</a>
+    <a routerLink="/words" routerLinkActive="active" (click)="closeMenu()">Words</a>
+    <a routerLink="/our-map" routerLinkActive="active" (click)="closeMenu()">Map</a>
+    <a routerLink="/mystery" routerLinkActive="active" (click)="closeMenu()">Mystery</a>
+
+<a *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</a>
+  </div>
+
+  <div class="hamburger" (click)="toggleMenu()">☰</div>
+</nav>

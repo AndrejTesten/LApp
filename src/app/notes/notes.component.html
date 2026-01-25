@@ -1,0 +1,24 @@
+<div class="notes-container">
+
+  <h2>💌 Love Notes</h2>
+
+  <p *ngIf="todayNoteCount > 0" class="note-counter">
+    You wrote {{ todayNoteCount }} note today
+  </p>
+
+  <div class="notes-list">
+    <div class="note-card" *ngFor="let n of notes">
+      <div class="note-header">
+        <span class="sender">{{ getSender(n)}}</span>
+        <span class="date">{{ n.createdAt | date:'mediumDate' }}</span>
+      </div>
+      <p class="note-text">{{ n.message }}</p>
+    </div>
+  </div>
+
+  <div class="composer" *ngIf="canWriteToday">
+    <textarea placeholder="Write your note…" [(ngModel)]="message"></textarea>
+    <button (click)="send()" [disabled]="!message.trim()">Add Note</button>
+  </div>
+
+</div>

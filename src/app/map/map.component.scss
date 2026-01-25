@@ -1,0 +1,23 @@
+.map-container {
+  height: 300px;
+  min-height: 250px;
+  width: 100%;
+  border-radius: 12px 12px 0 0; /* rounded top of card */
+  overflow: hidden;
+
+  google-map {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.card-body.text-center {
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding: 12px 0;
+}
+
+.text-pink {
+  color: #ff5c8a;
+}

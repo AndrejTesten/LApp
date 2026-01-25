@@ -1,0 +1,24 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: $primary-color;
+  color: white;
+  box-shadow: $box-shadow;
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  button {
+    background-color: white;
+    color: $primary-color;
+    font-weight: bold;
+    margin-right: 5px;
+    &:hover {
+      background-color: lighten($primary-color, 40%);
+    }
+  }
+}

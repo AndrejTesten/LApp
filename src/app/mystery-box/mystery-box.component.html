@@ -1,0 +1,27 @@
+<div class="mystery-container">
+
+  <!-- Background gradient -->
+  <div class="background"></div>
+
+  <!-- Main content -->
+  <div class="content">
+
+    <!-- Title & dynamic instructions -->
+    <div class="instructions">
+      <h2>Mistery box!</h2>
+      <p>{{ instructionText }}</p>
+    </div>
+
+    <!-- 3D Canvas -->
+    <div #canvas class="canvas" (click)="handleClick()"></div>
+
+    <!-- Speech bubble -->
+    <div #speechBubble class="speech-bubble"></div>
+
+   </div>
+<!-- Back to Home Button -->
+<button *ngIf="showBackButton" class="back-button" (click)="goHome()">
+  🏠 Back to Home
+</button>
+
+</div>

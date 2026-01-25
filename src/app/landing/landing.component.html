@@ -1,0 +1,44 @@
+<div class="landing">
+  <!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Next time together in: </h1>
+
+    <!-- Countdown -->
+    <div class="hero-countdown" *ngIf="!celebrationToday && nextVisit">
+      <span>{{ countdown.days }} days</span>
+    </div>
+
+    <!-- Celebration -->
+    <p *ngIf="celebrationToday">🎉 We are seeing each other today! 🎉</p>
+
+    <!-- Visit note or default -->
+    <p class="hero-note" *ngIf="nextVisit && !celebrationToday">
+      {{ nextVisit.note }}
+    </p>
+
+    <!-- Date and city -->
+    <small>
+      {{ nextVisit?.startDate | date:'fullDate' }}
+      <span *ngIf="nextVisit?.city"> {{ nextVisit?.city }}</span>
+    </small>
+
+  </div>
+</section>
+
+
+
+  <!-- NOTES PANEL -->
+  <section class="notes-panel">
+    <h3>Latest Notes 💌</h3>
+
+    <div class="notes-list">
+      <div class="note" *ngFor="let note of recentNotes">
+        <strong>{{ note.user }}</strong> — {{ note.message }}
+      </div>
+    </div>
+
+    <button routerLink="/notes">See all notes</button>
+  </section>
+
+</div>
