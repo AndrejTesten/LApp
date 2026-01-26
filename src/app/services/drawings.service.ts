@@ -12,7 +12,7 @@ export interface Drawing {
   providedIn: 'root'
 })
 export class DrawingsService {
-  private baseUrl = 'https://localhost:7134/api/drawings';
+  private baseUrl = 'https://loveapp-qq2l.onrender.com/api/drawings';
 
 constructor(private http: HttpClient, private spinner: SpinnerService) {}
 

@@ -10,7 +10,7 @@ export interface SecondMessageResponse {
   providedIn: 'root'
 })
 export class MysteryService {
-  private baseUrl = 'https://localhost:7134/api/mystery'; // backend route
+  private baseUrl = '/api/mystery'; // backend route
 
   constructor(private http: HttpClient) {}
 

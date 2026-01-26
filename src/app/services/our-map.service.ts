@@ -29,7 +29,7 @@ export interface NewPinDto {
 })
 export class OurMapService {
 
-  private apiUrl = 'https://localhost:7134/api/OurMap'; // your backend controller URL
+  private apiUrl = 'https://loveapp-qq2l.onrender.com/api/OurMap'; // your backend controller URL
 
   constructor(private http: HttpClient) {}
 

@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private apiUrl = 'https://localhost:7134/api/auth';
+  private apiUrl = 'https://loveapp-qq2l.onrender.com/api/auth';
 
   constructor(private http: HttpClient) { }
 

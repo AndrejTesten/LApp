@@ -4,7 +4,7 @@ import { Trip } from "../models/trip.model";
 
 @Injectable({ providedIn: 'root' })
 export class TripService {
-  private api = 'https://localhost:7134/api/trips';
+  private api = 'https://loveapp-qq2l.onrender.com/api/trips';
 
   constructor(private http: HttpClient) {}
 

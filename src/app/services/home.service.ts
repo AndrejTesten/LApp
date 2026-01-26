@@ -21,7 +21,7 @@ export interface Visit {
 })
 export class HomeService {
 
-  private baseUrl = 'https://localhost:7134/api/home'; // your backend controller route
+  private baseUrl = 'https://loveapp-qq2l.onrender.com/api/home'; // your backend controller route
 
   constructor(private http: HttpClient) {}
 

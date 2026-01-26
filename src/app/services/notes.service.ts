@@ -13,7 +13,7 @@ export interface Note {
   providedIn: 'root'
 })
 export class NotesService {
-  private api = 'https://localhost:7134/api/notes';
+  private api = 'https://loveapp-qq2l.onrender.com/api/notes';
 
   constructor(private http: HttpClient) {}
 

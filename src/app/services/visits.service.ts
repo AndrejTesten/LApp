@@ -14,7 +14,7 @@ export interface Visit {
   providedIn: 'root'
 })
 export class VisitsService {
-  private baseUrl = '/api/visits';
+  private baseUrl = 'https://loveapp-qq2l.onrender.com/api/visits';
 
   constructor(private http: HttpClient) {}
 

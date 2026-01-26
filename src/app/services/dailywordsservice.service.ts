@@ -14,7 +14,7 @@ export interface DailyWord {
 
 @Injectable({ providedIn: 'root' })
 export class DailyWordsService {
-  private apiUrl = 'https://localhost:7134/api/DailyWords';
+  private apiUrl = 'https://loveapp-qq2l.onrender.com/api/DailyWords';
 
   constructor(private http: HttpClient) {}
 
