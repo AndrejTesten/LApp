@@ -14,7 +14,7 @@ export interface Visit {
   providedIn: 'root'
 })
 export class VisitsService {
-  private baseUrl = 'https://localhost:7134/api/visits';
+  private baseUrl = '/api/visits';
 
   constructor(private http: HttpClient) {}
 
