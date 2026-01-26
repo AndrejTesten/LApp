@@ -12,7 +12,7 @@ import { authGuard } from './services/auth.guard'; // <-- import your guard
 
 export const routes: Routes = [
   // Redirect root to login if not logged in
-{ path: '', redirectTo: 'login', pathMatch: 'full' }
+{ path: '', redirectTo: 'login', pathMatch: 'full' },
 
   // Protected routes
   { path: 'home', component: LandingComponent, canActivate: [authGuard] },
