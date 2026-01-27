@@ -162,7 +162,7 @@ if (this.penguin && this.penguin.visible && this.speechBubbleRef) {
 
   // Place bubble directly below penguin
   bubble.style.left = `${pos.x}px`;
-  bubble.style.top = `${pos.y + 50}px`; // adjust +50 as needed
+  bubble.style.top = `${pos.y - 20}px`; // adjust +50 as needed
   bubble.style.transform = 'translateX(-50%)'; // center horizontally only
 }
   };

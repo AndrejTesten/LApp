@@ -74,7 +74,7 @@
   font-size: 0.9rem;
   white-space: normal;      // allow wrapping
   word-break: break-word;   // break long words
-  max-width: 200px;         // constrain width
+  max-width: 400px;         // constrain width
   text-align: center;
   pointer-events: none;
   opacity: 0;
@@ -87,8 +87,22 @@
   }
 
   @media (max-width: 600px) {
-    max-width: 140px;       // smaller width on phones
-    font-size: 0.8rem;      // smaller text
+ position: absolute;
+  padding: 6px 12px;          /* slightly smaller padding */
+  background: #ff6f91;
+  color: #fff;
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 0.85rem;         /* smaller by default */
+  white-space: normal;         /* allow wrapping */
+  word-break: break-word;      /* break long words */
+  max-width: 180px;            /* slightly smaller */
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
 

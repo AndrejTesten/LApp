@@ -1,44 +1,37 @@
-<div class="landing">
-  <!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Next time together in: </h1>
+<div class="romance">
 
-    <!-- Countdown -->
-    <div class="hero-countdown" *ngIf="!celebrationToday && nextVisit">
-      <span>{{ countdown.days }} days</span>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Next time together in</h1>
+
+    <div class="countdown" *ngIf="!celebrationToday && nextVisit">
+      <span>{{ countdown.days }}</span> days
     </div>
 
-    <!-- Celebration -->
     <p *ngIf="celebrationToday">🎉 We are seeing each other today! 🎉</p>
 
-    <!-- Visit note or default -->
     <p class="hero-note" *ngIf="nextVisit && !celebrationToday">
       {{ nextVisit.note }}
     </p>
 
-    <!-- Date and city -->
     <small>
-      {{ nextVisit?.startDate | date:'fullDate' }}
-      <span *ngIf="nextVisit?.city"> {{ nextVisit?.city }}</span>
+     <b> {{ nextVisit?.startDate  | date:'fullDate' }}</b>
+      <span *ngIf="nextVisit?.city"> — <b> {{ nextVisit?.city }} </b></span>
     </small>
 
+    <button class="cta" routerLink="/notes">
+      Reveal all love notes 💌
+    </button>
+  </section>
+
+  <!-- FLOATING BALLOON NOTES -->
+<section class="floating-stats">
+  <div 
+    *ngFor="let note of recentNotes"
+    [ngClass]="note.user === 'Partner' ? 'partner' : 'you'">
+    💬 {{ note.message }}
   </div>
 </section>
 
-
-
-  <!-- NOTES PANEL -->
-  <section class="notes-panel">
-    <h3>Latest Notes 💌</h3>
-
-    <div class="notes-list">
-      <div class="note" *ngFor="let note of recentNotes">
-        <strong>{{ note.user }}</strong> — {{ note.message }}
-      </div>
-    </div>
-
-    <button routerLink="/notes">See all notes</button>
-  </section>
 
 </div>
