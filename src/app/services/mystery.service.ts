@@ -10,7 +10,7 @@ export interface SecondMessageResponse {
   providedIn: 'root'
 })
 export class MysteryService {
-  private baseUrl = '/api/mystery'; // backend route
+  private baseUrl = 'https://loveapp-qq2l.onrender.com/api/mystery'; // backend route
 
   constructor(private http: HttpClient) {}
 
