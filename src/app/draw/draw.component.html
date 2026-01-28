@@ -6,28 +6,30 @@
     <div class="card-body">
 
       <!-- CONTROLS -->
-      <div class="controls">
+<div class="controls">
 
-        <div class="control-group">
-          <label for="color">Brush:</label>
-          <input id="color" type="color" [(ngModel)]="brushColor">
-        </div>
+  <div class="control-group">
+    <label>Brush</label>
+    <input type="color" [(ngModel)]="brushColor">
+  </div>
 
-        <div class="control-group">
-          <label for="size">Size:</label>
-          <input id="size" type="number" [(ngModel)]="brushSize" min="1" max="50">
-        </div>
+  <div class="control-group">
+    <label>Size</label>
+    <input type="number" [(ngModel)]="brushSize" min="1" max="50">
+  </div>
 
-        <button class="btn" (click)="toggleEraser()">
-          {{ erasing ? 'Eraser On' : 'Eraser Off' }}
-        </button>
+  <div class="button-row">
+    <button class="btn" (click)="toggleEraser()">
+      {{ erasing ? 'Eraser On' : 'Eraser Off' }}
+    </button>
 
-        <button class="btn" (click)="clearCanvas()">Clear</button>
-        <button class="btn" (click)="saveDrawing()">Save</button>
-<button class="btn" (click)="downloadCanvas()">Download</button>
+    <button class="btn" (click)="clearCanvas()">Clear</button>
+    <button class="btn" (click)="saveDrawing()">Save</button>
+    <button class="btn" (click)="downloadCanvas()">Download</button>
+  </div>
 
+</div>
 
-      </div>
 
       <!-- CANVAS -->
       <canvas
