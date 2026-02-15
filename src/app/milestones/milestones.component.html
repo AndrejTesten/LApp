@@ -1,0 +1,21 @@
+<div class="milestones-page">
+  <h1>Milestones</h1>
+
+  <p class="time-together">Time Together: {{ getTimeTogether() }}</p>
+  <p class="time-together anniversary">💖 {{ getDaysUntilAnniversary() }}</p>
+
+  <div class="timeline">
+    <div class="milestone" *ngFor="let m of milestones">
+      <div class="milestone-bullet" [class.highlight]="m.highlight">
+        <span *ngIf="m.highlight">💖</span>
+        <span *ngIf="!m.highlight">❤️</span>
+      </div>
+      <div class="milestone-content" [class.highlight]="m.highlight">
+        <h2>{{ m.title }}</h2>
+        <span class="date">{{ m.date | date:'mediumDate' }}</span>
+        <p *ngIf="m.description">{{ m.description }}</p>
+        <img *ngIf="m.photoUrl" [src]="m.photoUrl" alt="{{ m.title }}">
+      </div>
+    </div>
+  </div>
+</div>

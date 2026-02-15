@@ -1,0 +1,4 @@
+<div class="notification-popup" *ngFor="let n of notifications">
+  <p>{{ n.text }}</p>
+  <button (click)="dismiss(n)">✖</button>
+</div>

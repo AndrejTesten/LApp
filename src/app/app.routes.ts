@@ -9,6 +9,8 @@ import { TripListComponent } from './trip-list/trip-list.component';
 import { OurMapComponent } from './our-map/our-map.component';
 import { MysteryBoxComponent } from './mystery-box/mystery-box.component';
 import { authGuard } from './services/auth.guard'; // <-- import your guard
+import { MilestonesComponent } from './milestones/milestones.component';
+import { DailyQuestionsComponent } from './daily-questions/daily-questions.component';
 
 export const routes: Routes = [
   // Redirect root to login if not logged in
@@ -23,6 +25,8 @@ export const routes: Routes = [
   { path: 'words', component: DailyWordsComponent, canActivate: [authGuard] },
   { path: 'our-map', component: OurMapComponent, canActivate: [authGuard] },
   { path: 'mystery', component: MysteryBoxComponent, canActivate: [authGuard] },
+  { path: 'milestones', component: MilestonesComponent, canActivate: [authGuard] },
+  { path: 'questions', component: DailyQuestionsComponent, canActivate: [authGuard] },
 
   // Login page (unprotected)
   { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },

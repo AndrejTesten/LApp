@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { HomeService, Note, Visit } from '../services/home.service';
+import { NotificationsComponent } from '../shared/notifications/notifications.component';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NotificationsComponent],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })

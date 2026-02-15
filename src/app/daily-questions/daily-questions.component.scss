@@ -1,0 +1,63 @@
+.daily-questions-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+
+  h2 {
+    text-align: center;
+    color: #ff5c5c;
+    margin-bottom: 1rem;
+  }
+
+  .question {
+    background: #ffe6e6;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .answers {
+    margin-bottom: 1rem;
+
+    .answer {
+      background: #fff0f0;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+  }
+
+  .submit-answer {
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ffcccc;
+      resize: none;
+      margin-bottom: 0.5rem;
+      min-height: 80px;
+    }
+
+    button {
+      background: #ff5c5c;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background: #ff3b3b;
+      }
+    }
+  }
+}

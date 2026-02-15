@@ -12,8 +12,10 @@
     <a routerLink="/words" routerLinkActive="active" (click)="closeMenu()">Words</a>
     <a routerLink="/our-map" routerLinkActive="active" (click)="closeMenu()">Map</a>
     <a routerLink="/mystery" routerLinkActive="active" (click)="closeMenu()">Mystery</a>
+    <a routerLink="/milestones" routerLinkActive="active" (click)="closeMenu()">Milestones</a>
+    <a routerLink="/questions" routerLinkActive="active" (click)="closeMenu()">Questions</a>
 
-<a *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</a>
+    <a *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</a>
   </div>
 
   <div class="hamburger" (click)="toggleMenu()">☰</div>

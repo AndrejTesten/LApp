@@ -1,0 +1,18 @@
+<div class="daily-questions-page" *ngIf="question">
+  <h2>Day {{ question.dayNumber }} Question</h2>
+  <p class="question">{{ question.text }}</p>
+
+  <div class="answers">
+    <h3>Answers</h3>
+    <div *ngFor="let a of answers" class="answer">
+      <strong>{{ a.userId }}:</strong> {{ a.text }}
+    </div>
+  </div>
+
+  <div class="submit-answer">
+    <textarea [(ngModel)]="myAnswer" placeholder="Your answer..."></textarea>
+    <button (click)="submitAnswer()">Submit</button>
+  </div>
+</div>
+
+<p *ngIf="!question">No question for today yet. Come back tomorrow!</p>
