@@ -16,7 +16,7 @@ export class OurMapComponent implements OnInit {
   menuOpen = false;
   toggleMenu() { this.menuOpen = !this.menuOpen; }
   closeMenu() { this.menuOpen = false; }
-  logout() { console.log('logout'); }
+  logout() { }
 navLinks = [
   { name: 'Home', url: '/home' },
   { name: 'Draw', url: '/draw' },

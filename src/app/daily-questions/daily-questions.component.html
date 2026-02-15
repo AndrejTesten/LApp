@@ -1,18 +1,29 @@
-<div class="daily-questions-page" *ngIf="question">
-  <h2>Day {{ question.dayNumber }} Question</h2>
-  <p class="question">{{ question.text }}</p>
+<div class="daily-questions-page" *ngIf="current">
+  <div class="question-card">
+    <h2>Question:</h2>
+    <p>{{ current.question.text }}</p>
+  </div>
 
-  <div class="answers">
-    <h3>Answers</h3>
-    <div *ngFor="let a of answers" class="answer">
-      <strong>{{ a.userId }}:</strong> {{ a.text }}
+  <div *ngIf="current.answers.length" class="answers">
+    <h3>Answers so far:</h3>
+    <div *ngFor="let a of current.answers" class="answer">
+      <strong>{{ getUserName(a.userId) }}:</strong> {{ a.text }}
     </div>
   </div>
 
-  <div class="submit-answer">
+  <div *ngIf="current.answers.length < 2" class="submit-answer">
     <textarea [(ngModel)]="myAnswer" placeholder="Your answer..."></textarea>
     <button (click)="submitAnswer()">Submit</button>
   </div>
 </div>
 
-<p *ngIf="!question">No question for today yet. Come back tomorrow!</p>
+<div class="all-answered p-4">
+  <h3>All answered questions:</h3>
+  <div *ngFor="let q of allAnswered" class="answered-card">
+    <p><strong>Q:</strong> {{ q.question.text }}</p>
+    <div *ngFor="let a of q.answers" class="answer">
+      <strong>{{ getUserName(a.userId) }}:</strong> {{ a.text }}
+    </div>
+    <hr>
+  </div>
+</div>

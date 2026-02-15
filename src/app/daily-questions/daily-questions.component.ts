@@ -1,43 +1,71 @@
 import { Component, OnInit } from '@angular/core';
-import { DailyQuestionsService, Question, Answer } from '../services/daily-questions.service';
+import { QuestionsService, CurrentQuestion, Answer } from '../services/daily-questions.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-daily-questions',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './daily-questions.component.html',
-  styleUrls: ['./daily-questions.component.scss']
+  styleUrls: ['./daily-questions.component.scss'],
+    imports: [CommonModule, FormsModule]
+
 })
 export class DailyQuestionsComponent implements OnInit {
-  question: Question | null = null;
-  answers: Answer[] = [];
+  current?: CurrentQuestion;
+  allAnswered: CurrentQuestion[] = [];
   myAnswer: string = '';
 
-  constructor(private dqService: DailyQuestionsService) {}
+  constructor(private questionsService: QuestionsService) {}
 
   ngOnInit(): void {
-    this.loadQuestion();
+    this.loadCurrent();
+    this.loadAllAnswered();
   }
 
-  loadQuestion() {
-    this.dqService.getTodaysQuestion().subscribe(q => {
-      this.question = q;
-      this.loadAnswers(q.id);
+  loadCurrent() {
+    this.questionsService.getCurrent().subscribe({
+      next: q => this.current = q,
+      error: err => console.error('Failed to load current question', err)
     });
   }
 
-  loadAnswers(questionId: number) {
-    this.dqService.getAnswers(questionId).subscribe(a => this.answers = a);
+  loadAllAnswered() {
+    this.questionsService.getAllAnswered().subscribe({
+      next: list => this.allAnswered = list,
+      error: err => console.error('Failed to load answered questions', err)
+    });
+  }
+
+ getUserName(userId: string): string {
+    return userId === '1' ? 'Andrej' : userId === '2' ? 'Laila' : userId;
   }
 
   submitAnswer() {
-    if (!this.question || !this.myAnswer.trim()) return;
+  if (!this.myAnswer.trim() || !this.current) return;
 
-    this.dqService.submitAnswer(this.question.id, this.myAnswer).subscribe(ans => {
-      this.answers.push(ans);
-      this.myAnswer = '';
+  this.questionsService.submitAnswer(this.current.question.id, this.myAnswer)
+    .subscribe({
+      next: () => {
+        this.myAnswer = '';
+
+        // Reload current question from backend
+        this.questionsService.getCurrent().subscribe({
+          next: data => this.current = data,
+          error: err => {
+            if (err.status === 404) {
+              // No more questions left
+              this.current = undefined;
+            } else {
+              console.error('Failed to load new question', err);
+            }
+          }
+        });
+
+        // Reload all answered questions
+        this.loadAllAnswered();
+      },
+      error: err => console.error('Failed to submit answer', err)
     });
-  }
+}
+
 }

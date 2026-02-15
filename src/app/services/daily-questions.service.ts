@@ -1,3 +1,4 @@
+// questions.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -5,7 +6,6 @@ import { Observable } from 'rxjs';
 export interface Question {
   id: number;
   text: string;
-  dayNumber: number;
 }
 
 export interface Answer {
@@ -13,26 +13,39 @@ export interface Answer {
   questionId: number;
   userId: string;
   text: string;
-  answeredAt: string;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
-export class DailyQuestionsService {
-  private apiUrl = 'https://loveapp-qq2l.onrender.com/api/Questions';
+export interface CurrentQuestion {
+  question: Question;
+  answers: Answer[];
+}
+
+@Injectable({ providedIn: 'root' })
+export class QuestionsService {
+  private apiUrl = 'https://loveapp-qq2l.onrender.com/api/questions';
 
   constructor(private http: HttpClient) {}
 
-  getTodaysQuestion(): Observable<Question> {
-    return this.http.get<Question>(`${this.apiUrl}/today`);
+getCurrent(): Observable<CurrentQuestion> {
+  return this.http.get<CurrentQuestion>(`${this.apiUrl}/current`);
+}
+
+submitAnswer(questionId: number, text: string) {
+  if (!questionId) {
+    throw new Error("Question ID is undefined");
   }
 
-  getAnswers(questionId: number): Observable<Answer[]> {
-    return this.http.get<Answer[]>(`${this.apiUrl}/${questionId}/answers`);
-  }
+  return this.http.post<Answer>(
+    `${this.apiUrl}/${questionId}/answers`,
+    { text }, // send JSON
+    { headers: { 'Content-Type': 'application/json' } }
+  );
+}
 
-  submitAnswer(questionId: number, text: string): Observable<Answer> {
-    return this.http.post<Answer>(`${this.apiUrl}/${questionId}/answers`, text);
+
+
+
+  getAllAnswered(): Observable<{ question: Question, answers: Answer[] }[]> {
+    return this.http.get<{ question: Question, answers: Answer[] }[]>(`${this.apiUrl}/all`);
   }
 }

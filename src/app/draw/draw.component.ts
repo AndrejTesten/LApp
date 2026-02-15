@@ -50,7 +50,7 @@ savedDrawing: string | null = null;
   // --------------------------
   toggleMenu() { this.menuOpen = !this.menuOpen; }
   closeMenu() { this.menuOpen = false; }
-  logout() { console.log('User logged out'); }
+  logout() { }
 
   // --------------------------
   // CANVAS METHODS
@@ -158,8 +158,7 @@ savedDrawing: string | null = null;
 private loadDrawing() {
   this.drawService.getDrawing(this.userId).subscribe({
     next: data => {
-      console.log(data)
-            console.log("data")
+
 
       if (!data) return;
       this.savedDrawing = data; // store for redraw after resize
