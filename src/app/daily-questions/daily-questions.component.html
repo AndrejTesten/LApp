@@ -19,11 +19,23 @@
 
 <div class="all-answered p-4">
   <h3>All answered questions:</h3>
-  <div *ngFor="let q of allAnswered" class="answered-card">
+
+  <!-- 🔍 Search Input -->
+  <input 
+    type="text" 
+    [(ngModel)]="searchTerm" 
+    (input)="filterQuestions()"
+    placeholder="Search questions or answers..."
+    class="search-input"
+  />
+
+  <div *ngFor="let q of filteredAnswered" class="answered-card">
     <p><strong>Q:</strong> {{ q.question.text }}</p>
+
     <div *ngFor="let a of q.answers" class="answer">
       <strong>{{ getUserName(a.userId) }}:</strong> {{ a.text }}
     </div>
+
     <hr>
   </div>
 </div>
